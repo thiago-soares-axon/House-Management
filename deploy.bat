@@ -1,0 +1,1 @@
+docker compose -f local.compose.yaml up -d --build 
