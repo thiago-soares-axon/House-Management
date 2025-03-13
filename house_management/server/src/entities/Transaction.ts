@@ -16,5 +16,5 @@ export class Transaction {
     category: Category;
 
     @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-    dateReceived: Date;
+    dateCreatedAt: Date;
 }
