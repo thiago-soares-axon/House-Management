@@ -1,11 +1,11 @@
 import 'reflect-metadata'; // Requerido para o TypeORM
 import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
-import { Category } from '../entities/Category';
-import { Expense } from '../entities/Expense';
-import { Income } from '../entities/Income';
-import { Transaction } from '../entities/Transaction';
-import { User } from '../entities/User';
+import { Category } from '../database/entities/Category';
+import { Expense } from '../database/entities/Expense';
+import { Income } from '../database/entities/Income';
+import { Transaction } from '../database/entities/Transaction';
+import { User } from '../database/entities/User';
 
 dotenv.config({ path: '../.env' });
 
@@ -26,7 +26,5 @@ const AppDataSource = new DataSource({
     entities: [Category, Expense, Income, Transaction, User],
     migrations: [__dirname + '/../migrations/*.ts'],
 });
-
-console.log('DataSource instanciado:', AppDataSource);
 
 export default AppDataSource;
