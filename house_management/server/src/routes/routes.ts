@@ -1,12 +1,17 @@
+import { authMiddleware } from "../middlewares/auth/authMiddlewares";
+import { LoginController } from "../controllers/userController/loginController";
 import { UserController } from "../controllers/userController/userController";
-import { Router, Request, Response } from "express";
-
+import { Router } from "express";
 
 const routes = Router();
 
-const createUser = new UserController().createUser.bind(new UserController());
+const userController = new UserController();
+const loginController = new LoginController();
 
-routes.post('/user/create', createUser);
+routes.post('/user/create', userController.createUser.bind(userController));
+routes.post('/user/login', loginController.loginUser.bind(loginController));
 
+routes.use(authMiddleware);
+routes.get('/user/getProfile', loginController.getProfileUser.bind(loginController));
 
 export default routes;
