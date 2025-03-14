@@ -15,4 +15,8 @@ export default class UserService {
     async findUserByEmail(email: string): Promise<User | null> {
         return this.userRepository.findOne({ where: { email } })
     }
+
+    async updateUserPassword(userId: number, newPassword: string): Promise<void> {
+        await this.userRepository.update(userId, { password: newPassword });
+    }
 }
